@@ -1,0 +1,33 @@
+.header {
+  background-color: rgba(194, 3, 3, 0.623);
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.form div {
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.input {
+  padding: 10px 50px;
+  border-radius: 8px;
+  width: 100%;
+
+  display: block;
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  background-color: transparent;
+  border: none;
+  transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  &:hover {
+    color: rgba(194, 3, 3, 0.623);
+  }
+}
