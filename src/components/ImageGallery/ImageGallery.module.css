@@ -7,3 +7,15 @@
   padding: 0;
   margin-bottom: 20px;
 }
+@media screen and (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (min-width: 1281px) {
+  .wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+}
