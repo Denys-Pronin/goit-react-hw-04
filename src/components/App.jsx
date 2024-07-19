@@ -22,16 +22,14 @@ function App() {
     if (search == "") {
       return;
     }
+
     async function getData() {
       try {
+        setLoad(true);
         setLoadBtn(true);
         const data = await fetchGallery(search, page);
-        console.log(data);
-        console.log(data.length);
         if (data.length < 12 && data.length > 0) {
           setLoadBtn(false);
-        } else if (data.length == 0) {
-          setError(true);
         }
         setQuery((prev) => [...prev, ...data]);
       } catch {
@@ -46,14 +44,16 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoadBtn(false);
-    setQuery([]);
-    setPage(1);
+    setError(false);
+
     if (e.target.elements.query.value.trim() == "") {
       toast.error("Write a word!");
       return;
     }
+    setQuery([]);
+    setPage(1);
     setSearch(e.target.elements.query.value.trim());
-    setError(false);
+
     e.target.reset();
   };
 
