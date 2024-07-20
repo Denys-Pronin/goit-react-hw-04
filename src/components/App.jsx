@@ -30,6 +30,8 @@ function App() {
         const data = await fetchGallery(search, page);
         if (data.length < 12 && data.length > 0) {
           setLoadBtn(false);
+        } else if (data.length == 0) {
+          setError(true);
         }
         setQuery((prev) => [...prev, ...data]);
       } catch {
@@ -41,20 +43,12 @@ function App() {
     getData();
   }, [page, search]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (inputValue) => {
     setLoadBtn(false);
     setError(false);
-
-    if (e.target.elements.query.value.trim() == "") {
-      toast.error("Write a word!");
-      return;
-    }
     setQuery([]);
     setPage(1);
-    setSearch(e.target.elements.query.value.trim());
-
-    e.target.reset();
+    setSearch(inputValue);
   };
 
   const updatePage = () => {
